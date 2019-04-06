@@ -1,0 +1,58 @@
+CREATE TABLE persons
+(
+  first_name  VARCHAR(255),
+  second_name CHAR(1)
+);
+
+INSERT INTO persons
+VALUES ('Mykyta', 'Kostiuk');
+
+ALTER TABLE persons
+  CHANGE second_name second_name varchar(255);
+
+SELECT *
+FROM persons;
+
+select concat(first_name, ' ', second_name) as full_name
+from persons;
+
+#Customer, Drink_order
+
+DROP TABLE CUSTOMERS;
+DROP TABLE DRINK_ORDERS;
+
+CREATE TABLE CUSTOMERS
+(
+  ID         INTEGER PRIMARY KEY,
+  FIRST_NAME VARCHAR(255),
+  LAST_NAME  VARCHAR(255),
+  ADDRESS    VARCHAR(255),
+  STATE      VARCHAR(2),
+  ZIP_CODE   int(5)
+);
+
+
+
+CREATE TABLE DRINK_ORDERS
+(
+ID                INTEGER PRIMARY KEY,
+CUSTOMER_ID       INTEGER,
+DRINK_DESCRIPTION CHAR(255),
+CONSTRAINT DRINK_ORDERS_CUSTOMERS_FK
+FOREIGN KEY (CUSTOMER_ID) REFERENCES CUSTOMERS (ID)
+);
+
+INSERT INTO CUSTOMERS
+VALUES (1234, 'Michael', 'Weston', '123 Brickel', 'FL', 33135);
+
+SELECT *
+FROM CUSTOMERS;
+
+INSERT INTO DRINK_ORDERS
+VALUES (12341234, 1234, 'Scotch');
+
+SELECT *
+FROM DRINK_ORDERS;
+
+#
+
