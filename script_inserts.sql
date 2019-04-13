@@ -33,4 +33,4 @@ from salaries
 order by emp_no desc;
 
 select *
-from dept_emp;
+from employees;
