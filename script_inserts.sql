@@ -23,9 +23,29 @@ VALUES (700000, '2000-12-3', 'Mill_2', 'Mill 2', 'F', '2018-9-8');
 INSERT INTO titles (emp_no, title, from_date, to_date)
 VALUES (700000, 'Title_mv', '2000-12-3', '2001-12-3');
 
-INSERT into dept_emp values (700000, 'd998', '2018-7-8', '2060-9-8');
+INSERT into dept_emp
+values (700000, 'd998', '2018-7-8', '2060-9-8');
 
-INSERT into salaries values (700000, 65461, '2018-9-8', '2060-9-8');
+INSERT into salaries
+values (700000, 65461, '2018-9-8', '2060-9-8');
+
+#---
+SELECT (@employee_no := (max(emp_no) + 1))
+from employees;
+
+select @employee_no;
+
+INSERT INTO employees (emp_no, birth_date, first_name, last_name, gender, hire_date)
+VALUES (@employee_no, '2000-12-3', 'Mill_2', 'Mill 2', 'F', '2018-9-8');
+
+INSERT INTO titles (emp_no, title, from_date, to_date)
+VALUES (@employee_no, 'Title_mv', '2000-12-3', '2001-12-3');
+
+INSERT into dept_emp
+values (@employee_no, 'd008', '2018-7-8', '2060-9-8');
+
+INSERT into salaries
+values (@employee_no, 65461, '2018-9-8', '2060-9-8');
 # ASSIGN_end
 
 select *
@@ -33,4 +53,5 @@ from salaries
 order by emp_no desc;
 
 select *
-from employees;
+from employees
+where emp_no = @employee_no;
