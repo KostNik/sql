@@ -132,13 +132,13 @@ where emp.emp_no not in (select ts.emp_no from titles as ts where ts.to_date = '
 
 SELECT emp.emp_no, emp.last_name, emp.first_name, ts.title, ts.to_date, ts.emp_no, ts.from_date
 FROM employees as emp
-  #JOIN ON titles with ts.to_date = '9999-01-01'.suppose rest ts = null
+       #JOIN ON titles with ts.to_date = '9999-01-01'.suppose rest ts = null
        LEFT OUTER JOIN titles as ts ON emp.emp_no = ts.emp_no and ts.to_date = '9999-01-01'
 WHERE ts.emp_no is null;
 
 SELECT emp.emp_no, emp.last_name, emp.first_name, ts.title, ts.to_date, ts.emp_no
 FROM employees as emp
-      LEFT JOIN titles as ts on emp.emp_no = ts.emp_no and ts.to_date = '9999-01-01'
+       LEFT JOIN titles as ts on emp.emp_no = ts.emp_no and ts.to_date = '9999-01-01'
 ;
 
 
