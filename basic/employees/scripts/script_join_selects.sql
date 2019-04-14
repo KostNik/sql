@@ -104,7 +104,7 @@ SELECT CURRENT_USER(), VERSION(), USER();
 
 #OUTER JOIN
 
-SELECT count(*)
+EXPLAIN SELECT count(*)
 from employees
 where emp_no not in (select dept_manager.emp_no from dept_manager);
 
