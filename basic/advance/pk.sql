@@ -5,8 +5,10 @@ drop table IF EXISTS users;
 create table users
 (
   id   int primary key auto_increment,
-  name text default 'DUMMY_NAME'
+  name varchar(255) default 'DUMMY_NAME'
 );
+
+create index user_name ON users (name);
 
 desc users;
 
